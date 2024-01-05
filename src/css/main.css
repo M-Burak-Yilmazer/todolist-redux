@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+  background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -90,5 +90,71 @@ body {
 }
 
 .displaytodos .buttons button:focus {
+  outline: 3px solid #001d3d;
+  box-shadow: 2px 4px 10px #023047;
+}
+.displaytodos .buttons button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.displaytodos ul {
+  list-style: none;
+  display: flex;
+  align-self: flex-start;
+  flex-wrap: wrap;
+  margin-left: 5%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+  margin: 0 1rem 1rem 0;
+  height: 8rem;
+  width: 18rem;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+.card textarea {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+  color: #001d3d;
+  height: 70%;
+}
+.card textarea:disabled {
+  background-color: transparent;
+}
+.card .btns {
+  position: absolute;
+
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.card .btns button {
+  border-radius: 20%;
+  border: none;
+  margin: 0 0.6rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #c43a30;
+  background-color: transparent;
+}
+.card .btns button:focus {
   outline: none;
+  box-shadow: 0px 0px 3px black;
+}
+.completed {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+  background-color: #00b4d8;
+  color: #d5dee7;
+  border: 2px solid #001d3d;
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
 }

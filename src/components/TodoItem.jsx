@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { completeTodos, updateTodos } from "../features/todoSlice";
 import { useRef } from "react";
+import { FaRegEdit } from "react-icons/fa";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const TodoItem = ({ item, id, removeTodo, todo }) => {
   const inputRef = useRef(null);
@@ -28,18 +31,20 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
       />
       <div className="btns">
         <button type="button" onClick={changeFocus}>
-          Edit
+          <FaRegEdit style={{ color: "#0d3b66" }} />
         </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(completeTodos(id));
-          }}
-        >
-          Complete
-        </button>
+        {todo.completed === false && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(completeTodos(id));
+            }}
+          >
+            <IoCheckmarkDoneCircle style={{ color: "#2c6e49" }} />
+          </button>
+        )}
         <button type="button" onClick={() => removeTodo(id)}>
-          Delete
+          <RiDeleteBin5Fill />
         </button>
       </div>
       {todo.completed === true && <span className="completed">Done</span>}

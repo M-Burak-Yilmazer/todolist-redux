@@ -9,6 +9,7 @@ import {
 // import TodoItem from "./TodoItem";
 
 import { MdPlaylistAddCircle } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -31,9 +32,9 @@ const Todo = () => {
         onChange={handleChange}
         value={todo}
       />
-      <button type="submit" className="add-btn">
+      <motion.button type="submit" className="add-btn">
         <MdPlaylistAddCircle style={{ fontSize: "2rem" }} />
-      </button>
+      </motion.button>
       <br />
       {/* <ul>
         {todos.map((todo) => (
