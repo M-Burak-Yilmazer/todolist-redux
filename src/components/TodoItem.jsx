@@ -22,7 +22,19 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
   console.log(todo.completed);
 
   return (
-    <li key={id} className="card">
+    <motion.li
+      initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
+      animate={{ x: 0, transition: { type: "spring", duration: 2 } }}
+      whileHover={{ scale: 0.9, transition: { type: "spring", duration: 0.1 } }}
+      exit={{
+        x: "-60vw",
+        scale: [1, 0],
+        transition: { duration: 0.5 },
+        backgroundColor: "rgba(255,0,0,0.1)",
+      }}
+      key={id}
+      className="card"
+    >
       <textarea
         ref={inputRef}
         disabled={true}
@@ -31,7 +43,7 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
       />
       <div className="btns">
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.3 }}
           whileTap={{ scale: 0.9 }}
           type="button"
           onClick={changeFocus}
@@ -40,7 +52,7 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
         </motion.button>
         {todo.completed === false && (
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.preventDefault();
@@ -51,7 +63,7 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
           </motion.button>
         )}
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.3 }}
           whileTap={{ scale: 0.9 }}
           type="button"
           onClick={() => removeTodo(id)}
@@ -60,7 +72,7 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
         </motion.button>
       </div>
       {todo.completed === true && <span className="completed">Done</span>}
-    </li>
+    </motion.li>
   );
 };
 export default TodoItem;
