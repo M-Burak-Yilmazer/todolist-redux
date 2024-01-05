@@ -6,6 +6,7 @@ import {
   removeTodos,
   updateTodos,
 } from "../features/todoSlice";
+import TodoItem from "./TodoItem";
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -32,7 +33,7 @@ const Todo = () => {
         Add
       </button>
       <br />
-      <ul>
+      {/* <ul>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -41,44 +42,11 @@ const Todo = () => {
             removeTodo={(id) => dispatch(removeTodos(id))}
           />
         ))}
-      </ul>
+      </ul> */}
     </form>
   );
 };
 
-const TodoItem = ({ item, id, removeTodo }) => {
-  const inputRef = useRef(null);
-  const dispatch = useDispatch();
 
-  const changeFocus = () => {
-    inputRef.current.disabled = false;
-    inputRef.current.focus();
-  };
-  const update = (id, value, e) => {
-    if (e.which === 13) {
-      dispatch(updateTodos({ id, item: value }));
-      inputRef.current.disabled = true;
-    }
-  };
-
-  return (
-    <li>
-      <textarea
-        ref={inputRef}
-        disabled={true}
-        defaultValue={item}
-        onKeyDown={(e) => update(id, inputRef.current.value, e)}
-      />
-      <button type="button" onClick={changeFocus}>
-        Edit
-      </button>
-      <button onClick={(e) =>{e.preventDefault() 
-      dispatch(completeTodos(id))}}>Complete</button>
-      <button type="button" onClick={() => removeTodo(id)}>
-        Delete
-      </button>
-    </li>
-  );
-};
 
 export default Todo;
