@@ -10,6 +10,7 @@ import {
 
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { motion } from "framer-motion";
+import { errorMsg, success, warn } from "../helpers/Toast";
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -21,10 +22,11 @@ const Todo = () => {
   const addBtn = (e) => {
     e.preventDefault();
     if (todo.trim() === "") {
-      alert("input is empty");
+      warn("input is empty");
     } else {
       dispatch(addTodo(todo));
       setTodo("");
+      success("A new Todo added")
     }
   };
   console.log(todos);

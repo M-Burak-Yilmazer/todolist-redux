@@ -5,6 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { motion } from "framer-motion";
+import { errorMsg, success, warn } from "../helpers/Toast";
 const TodoItem = ({ item, id, removeTodo, todo }) => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.preventDefault();
+              success("Todo is completed.")
               dispatch(completeTodos(id));
             }}
           >
@@ -66,7 +68,8 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
           whileHover={{ scale: 1.3 }}
           whileTap={{ scale: 0.9 }}
           type="button"
-          onClick={() => removeTodo(id)}
+          onClick={() => {removeTodo(id)
+          errorMsg("You deleted a todo.")}}
         >
           <RiDeleteBin5Fill />
         </motion.button>
