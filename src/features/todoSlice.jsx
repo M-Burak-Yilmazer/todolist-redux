@@ -14,10 +14,27 @@ const addTodoReducer = createSlice({
         ],
       };
     },
-    removeTodos: (state, action) => {}
+    removeTodos: (state, action) => {
+      return {
+        todolist: state.todolist.filter((item) => item.id !== action.payload),
+      };
+    },
+    updateTodos: (state, action) => {
+      return {
+        todolist: state.todolist.map((list) => {
+          if (list.id === action.payload.id) {
+            return {
+              ...list,
+              item: action.payload.item,
+            };
+          }
+          return list;
+        }),
+      };
+    },
   },
 });
 
-export const { addTodo } = addTodoReducer.actions;
+export const { addTodo, removeTodos, updateTodos } = addTodoReducer.actions;
 
 export const reducer = addTodoReducer.reducer;
