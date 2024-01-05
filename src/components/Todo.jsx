@@ -22,7 +22,7 @@ const Todo = () => {
   const addBtn = (e) => {
     e.preventDefault();
     if (todo.trim() === "") {
-      warn("input is empty");
+      warn("input is empty, please enter a valid value.");
     } else {
       dispatch(addTodo(todo));
       setTodo("");
