@@ -2,11 +2,13 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTodo,
-  completeTodos,
-  removeTodos,
-  updateTodos,
+  //   completeTodos,
+  //   removeTodos,
+  //   updateTodos,
 } from "../features/todoSlice";
-import TodoItem from "./TodoItem";
+// import TodoItem from "./TodoItem";
+
+import { MdPlaylistAddCircle } from "react-icons/md";
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -30,7 +32,7 @@ const Todo = () => {
         value={todo}
       />
       <button type="submit" className="add-btn">
-        Add
+        <MdPlaylistAddCircle style={{ fontSize: "2rem" }} />
       </button>
       <br />
       {/* <ul>
@@ -46,7 +48,5 @@ const Todo = () => {
     </form>
   );
 };
-
-
 
 export default Todo;
