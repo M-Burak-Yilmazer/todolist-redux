@@ -14,7 +14,7 @@ const Todo = () => {
     dispatch(addTodo(todo));
     setTodo("");
   };
-
+  console.log(todos);
   return (
     <form onSubmit={addBtn} className="addTodo">
       <input
@@ -43,6 +43,7 @@ const Todo = () => {
 
 const TodoItem = ({ item, id, removeTodo }) => {
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const changeFocus = () => {
     inputRef.current.disabled = false;
@@ -50,7 +51,7 @@ const TodoItem = ({ item, id, removeTodo }) => {
   };
   const update = (id, value, e) => {
     if (e.which === 13) {
-      updateTodos({ id, item: value });
+      dispatch(updateTodos({ id, item: value }));
       inputRef.current.disabled = true;
     }
   };

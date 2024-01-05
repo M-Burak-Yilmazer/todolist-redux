@@ -32,6 +32,19 @@ const addTodoReducer = createSlice({
         }),
       };
     },
+    completeTodos: (state, action) => {
+      return {
+        todolist: state.todolist.map((list) => {
+          if (list.id === action.payload) {
+            return {
+              ...list,
+              completed: true,
+            };
+          }
+          return list;
+        }),
+      };
+    },
   },
 });
 
