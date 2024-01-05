@@ -38,7 +38,7 @@ const addTodoReducer = createSlice({
           if (list.id === action.payload) {
             return {
               ...list,
-              completed: true,
+              completed: !list.completed,
             };
           }
           return list;
@@ -48,6 +48,7 @@ const addTodoReducer = createSlice({
   },
 });
 
-export const { addTodo, removeTodos, updateTodos } = addTodoReducer.actions;
+export const { addTodo, removeTodos, updateTodos, completeTodos } =
+  addTodoReducer.actions;
 
 export const reducer = addTodoReducer.reducer;

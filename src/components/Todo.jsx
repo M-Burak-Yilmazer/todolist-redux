@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeTodos, updateTodos } from "../features/todoSlice";
+import {
+  addTodo,
+  completeTodos,
+  removeTodos,
+  updateTodos,
+} from "../features/todoSlice";
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -67,6 +72,8 @@ const TodoItem = ({ item, id, removeTodo }) => {
       <button type="button" onClick={changeFocus}>
         Edit
       </button>
+      <button onClick={(e) =>{e.preventDefault() 
+      dispatch(completeTodos(id))}}>Complete</button>
       <button type="button" onClick={() => removeTodo(id)}>
         Delete
       </button>
