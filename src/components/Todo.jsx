@@ -14,8 +14,8 @@ const Todo = () => {
     setTodo("");
   };
 
-  const todos = useSelector((state) => state);
-  console.log(todos.todolist);
+  const todos = useSelector((state) => state.todolist);
+  console.log(todos);
 
   return (
     <form onSubmit={addBtn} className="addTodo">
@@ -31,7 +31,7 @@ const Todo = () => {
       </button>
       <br />
       <ul>
-        {todos.todolist.map(({ item, id }) => (
+        {todos.map(({ item, id }) => (
           <li key={id}>{item}</li>
         ))}
       </ul>
