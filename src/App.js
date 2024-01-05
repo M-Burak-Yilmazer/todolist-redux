@@ -11,7 +11,10 @@ function App() {
         animate={{ x: 0 }}
         transition={{ type: "spring", duration: 0.7 }}
         whileHover={{ scale: 1.1 }}
+        style={{fontSize:"3rem" , display:"flex", alignItems:"center",justifyContent:   "center"
+        }}
       >
+      <img style={{width:"60px"}} src="./redux.png" alt="redux png" />
         ToDo App
       </motion.h1>
       <motion.div
