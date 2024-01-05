@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-
+import { motion } from "framer-motion";
 const TodoItem = ({ item, id, removeTodo, todo }) => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
@@ -30,22 +30,34 @@ const TodoItem = ({ item, id, removeTodo, todo }) => {
         onKeyDown={(e) => update(id, inputRef.current.value, e)}
       />
       <div className="btns">
-        <button type="button" onClick={changeFocus}>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          type="button"
+          onClick={changeFocus}
+        >
           <FaRegEdit style={{ color: "#0d3b66" }} />
-        </button>
+        </motion.button>
         {todo.completed === false && (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.preventDefault();
               dispatch(completeTodos(id));
             }}
           >
             <IoCheckmarkDoneCircle style={{ color: "#2c6e49" }} />
-          </button>
+          </motion.button>
         )}
-        <button type="button" onClick={() => removeTodo(id)}>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          type="button"
+          onClick={() => removeTodo(id)}
+        >
           <RiDeleteBin5Fill />
-        </button>
+        </motion.button>
       </div>
       {todo.completed === true && <span className="completed">Done</span>}
     </li>

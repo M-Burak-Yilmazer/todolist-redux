@@ -20,8 +20,12 @@ const Todo = () => {
   };
   const addBtn = (e) => {
     e.preventDefault();
-    dispatch(addTodo(todo));
-    setTodo("");
+    if (todo.trim() === "") {
+      alert("input is empty");
+    } else {
+      dispatch(addTodo(todo));
+      setTodo("");
+    }
   };
   console.log(todos);
   return (
@@ -32,7 +36,12 @@ const Todo = () => {
         onChange={handleChange}
         value={todo}
       />
-      <motion.button type="submit" className="add-btn">
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        type="submit"
+        className="add-btn"
+      >
         <MdPlaylistAddCircle style={{ fontSize: "2rem" }} />
       </motion.button>
       <br />
